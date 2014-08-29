@@ -345,12 +345,12 @@ select.selectmenu {
 
 .flex-caption {
     bottom: 35px;
+    right: 35px;
     background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
     margin: 0;
     padding: 25px 25px 25px 30px;
     position: absolute;
-    right: 0;
     width: 295px;
 }
 
