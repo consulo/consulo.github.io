@@ -128,7 +128,7 @@ header .navbar {
     font-weight: 700;
     line-height: 1em;
     letter-spacing: -1px;
-    margin-top: 30px;
+    margin-top: 10px;
     padding: 0 0 0 15px;
 }
 
@@ -139,6 +139,7 @@ header .navbar-collapse ul.navbar-nav {
 
 header .navbar-default {
     background-color: #fff;
+    border-bottom: 1px lightgray solid;
 }
 
 header .nav li a:hover,
@@ -166,13 +167,15 @@ header .navbar-default .navbar-nav > .open > a:focus {
     transition: all .3s ease;
 }
 
-header .navbar {
-    min-height: 100px;
+header .navbar
+{
+    position: fixed;
+    width: 100%;
 }
 
-header .navbar-nav > li {
-    padding-bottom: 30px;
-    padding-top: 30px;
+header .navbar-nav > li
+{
+
 }
 
 header .navbar-nav > li > a {
@@ -315,12 +318,13 @@ select.selectmenu {
 5. Section: Featured
 ==================================== */
 
-#featured {
+#featured
+{
     width: 100%;
     background: #fcfcfc;
     position: relative;
     margin: 0;
-    padding: 0;
+    padding: 30px 0 0 0;
 }
 
 /* ===================================
@@ -330,7 +334,7 @@ select.selectmenu {
 
 #featured .flexslider {
     padding: 0;
-    margin: 50px 0 30px;
+    margin: 50px 0 0;
     background: #fff;
     position: relative;
     zoom: 1;
@@ -349,7 +353,7 @@ select.selectmenu {
     background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
     margin: 0;
-    padding: 25px 25px 25px 30px;
+    padding: 0 25px 25px 25px;
     position: absolute;
     width: 295px;
 }
@@ -370,7 +374,7 @@ select.selectmenu {
 ==================================== */
 section.callaction {
     background: #f9f9f9;
-    padding: 50px 0 0 0;
+    padding: 0 0 0 0;
 }
 
 /* ===================================
@@ -477,7 +481,7 @@ section.callaction {
     background: #252525;
     position: relative;
     margin: 0;
-    padding: 0;
+    padding: 30px 0 0 0;
     color: #fefefe;
 }
 
