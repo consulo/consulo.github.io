@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ModuleManager">
     <modules>
-      <module name="must-be.github.io" dirurl="file://$PROJECT_DIR$" current-layer="Default">
+      <module name="consulo.github.io" dirurl="file://$PROJECT_DIR$" current-layer="Default">
         <module-layer name="Default">
           <content url="file://$MODULE_DIR$">
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/.consulo" />
@@ -13,4 +13,3 @@
     </modules>
   </component>
 </project>
-
