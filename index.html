@@ -11,6 +11,7 @@
 		<link rel="stylesheet"
 			  href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>
 		<link href="css/main.css" rel="stylesheet"/>
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -83,9 +84,30 @@
 						<td style="height:100%; padding: 10px">
 							<div style="width: 1px; background-color: lightgray; height: 100%"></div>
 						</td>
-						<td style="width: 49%; height: 100%">
-							<a class="twitter-timeline" data-tweet-limit="5" data-link-color="#007200" data-chrome="noheader" href="https://twitter.com/ConsuloIDE">Tweets by ConsuloIDE</a>
-							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						<td >
+							<div id="table-info"></div>
+							<script>
+								var request = new XMLHttpRequest();
+								request.open('GET', 'https://raw.githubusercontent.com/consulo/consulo/refs/heads/master/FUNCTIONALITY.md', true);
+								request.send(null);
+								request.onreadystatechange = function ()
+								{
+									if(request.readyState === 4 && request.status === 200)
+									{
+										var type = request.getResponseHeader('Content-Type');
+										if(type.indexOf("text") !== 1)
+										{
+											let tableInfo = document.getElementById('table-info');
+
+											tableInfo.innerHTML = marked.parse(request.responseText);
+
+											let all = tableInfo.querySelectorAll('table');
+
+											all.forEach(e => e.setAttribute('class', 'table'));
+										}
+									}
+								}
+							</script>
 						</td>
 					</tr>
 				</table>
