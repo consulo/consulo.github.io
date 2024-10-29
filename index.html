@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 	<head>
 		<meta charset="utf-8">
 		<title>consulo.io</title>
@@ -11,6 +11,33 @@
 		<link rel="stylesheet"
 			  href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>
 		<link href="css/main.css" rel="stylesheet"/>
+		<style>
+			.container {
+				display: flex;
+				flex-direction: column;
+				flex-wrap: wrap;
+				flex-flow: row wrap;
+			}
+			#content, #table-info {
+				padding: 0 15px;
+			}
+			@media (width <= 800px) {
+				#content {
+					padding-right: 25px;
+				}
+				#table-info {
+					padding-left: 25px;
+				}
+			}
+			@media (width > 800px) {
+				#content, #table-info {
+					width: 50%;
+				}
+			}
+			#table-info th[align="center"] {
+				text-align: center;
+			}
+		</style>
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	</head>
 	<body>
@@ -50,70 +77,54 @@
 			</header>
 		</div>
 
-		<section id="content">
-			<div class="container">
-				<table style="width: 100%">
-					<tr style="width: 100%">
-						<td style="width: 50%; height: 100%; vertical-align:top; padding-right: 10px">
-							<div>
-								<h3>About</h3>
-								<p>Consulo — desktop IDE with Java & C# language support. Supports Unity framework.</p>
-								<h3>Downloads</h3>
-								<p>Visit <a href="https://consulo.app">download</a> page.</p>
-								<h3>Source Code</h3>
-								<p>All source code is hosted on <a href="https://github.com/consulo">GitHub</a>.</p>
-								<p>Main repository is <a href="https://github.com/consulo/consulo">consulo</a>.</p>
-								<p>Each plugin is located in its own repository (ther're over 100 of them).
-								<h3>Contributing</h3>
-								<p>Please visit our <a href="https://github.com/consulo/consulo/discussions">forum</a>.</p>
-								<p>Before reporting issue please read <a href="https://github.com/consulo/consulo/blob/master/CONTRIBUTING.md">Contributing Guide</a>.</p>
-								<p>If you want develop Consulo plugin please read <a href="https://consulo.dev/">Plugin Development Starter Guide</a>.</p>
-							</div>
-							<div>
-								<h3>Join our Discord Channel</h3>
-								<iframe src="https://discordapp.com/widget?id=769309696351666187&theme=light" width="100%" height="300px" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-							</div>
-						</td>
-						<td style="height:100%; padding: 10px">
-							<div style="width: 1px; background-color: lightgray; height: 100%"></div>
-						</td>
-						<td >
-							<div id="table-info"></div>
-							<script>
-								var request = new XMLHttpRequest();
-								request.open('GET', 'https://raw.githubusercontent.com/consulo/consulo/refs/heads/master/FUNCTIONALITY.md', true);
-								request.send(null);
-								request.onreadystatechange = function ()
-								{
-									if (request.readyState === 4 && request.status === 200)
-									{
-										var type = request.getResponseHeader('Content-Type');
-										if (type.indexOf("text") !== 1)
-										{
-											let tableInfo = document.getElementById('table-info');
+		<article class="container">
+			<section id="content">
+				<h3>About</h3>
+				<p>Consulo — desktop IDE with Java & C# language support. Supports Unity framework.</p>
 
-											tableInfo.innerHTML = marked.parse(request.responseText);
+				<h3>Downloads</h3>
+				<p>Visit <a href="https://consulo.app">download</a> page.</p>
 
-											let all = tableInfo.querySelectorAll('table');
+				<h3>Source Code</h3>
+				<p>All source code is hosted on <a href="https://github.com/consulo">GitHub</a>.</p>
+				<p>Main repository is <a href="https://github.com/consulo/consulo">consulo</a>.</p>
+				<p>Each plugin is located in its own repository (ther're over 100 of them).</p>
 
-											all.forEach(e => e.setAttribute('class', 'table'));
-										}
-									}
-								}
-							</script>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</section>
+				<h3>Contributing</h3>
+				<p>Please visit our <a href="https://github.com/consulo/consulo/discussions">forum</a>.</p>
+				<p>Before reporting issue please read <a href="https://github.com/consulo/consulo/blob/master/CONTRIBUTING.md">Contributing Guide</a>.</p>
+				<p>If you want develop Consulo plugin please read <a href="https://consulo.dev/">Plugin Development Starter Guide</a>.</p>
+
+				<h3>Join our Discord Channel</h3>
+				<iframe src="https://discordapp.com/widget?id=769309696351666187&theme=light" width="100%" height="300px" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+			</section>
+			<section id="table-info">
+				<script>
+					fetch("https://raw.githubusercontent.com/consulo/consulo/refs/heads/master/FUNCTIONALITY.md")
+						.then(response => {
+							if (!response.ok) {
+								return;
+							}
+
+							response.text().then(text => {
+								const tableInfo = document.getElementById("table-info");
+
+								tableInfo.innerHTML = marked.parse(text);
+
+								tableInfo.querySelectorAll("table").forEach(e => e.classList.add("table"));
+							});
+						});
+				</script>
+			</section>
+		</article>
 		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-		  ga('create', 'UA-98273789-1', 'auto');
-		  ga('send', 'pageview');
+			ga('create', 'UA-98273789-1', 'auto');
+			ga('send', 'pageview');
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
