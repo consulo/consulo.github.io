@@ -28,9 +28,12 @@
     background: transparent;
 }
 
-@media (max-width: 767.98px) {
-    .github-corner svg {
-        width: 60px;
-        height: 60px;
+#table-info th[align="center"] {
+    text-align: center;
+}
+
+@media (max-width: 991.98px) {
+    .github-corner {
+        display: none;
     }
 }
