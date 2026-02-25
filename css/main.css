@@ -1,4 +1,36 @@
-.github-fork-ribbon.right-top:before
-{
-    background-color: #090;
+.github-corner:hover .octo-arm { animation: octocat-wave 560ms ease-in-out; }
+@keyframes octocat-wave {
+    0%, 100% { transform: rotate(0); }
+    20%, 60% { transform: rotate(-25deg); }
+    40%, 80% { transform: rotate(10deg); }
+}
+
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1060;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.nav-link svg {
+    vertical-align: baseline;
+}
+
+#discord-widget {
+    border-radius: 8px;
+    background: transparent;
+}
+
+@media (max-width: 767.98px) {
+    .github-corner svg {
+        width: 60px;
+        height: 60px;
+    }
 }
